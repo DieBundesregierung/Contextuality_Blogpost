@@ -1,16 +1,7 @@
 # Introduction
 
-**Daniel: an idea for the \"same\" story with different characters is to
-use the plot of the book Around the world in 80 days (I never read the
-book but I know that the story contains exactly the phenomenon we want
-to illustrate - the guy finishes the trip around the world and then
-realizes he's one day behind what he expected). I can work on that, if
-you think it's a good idea.\
-Ioannis: If it's ok with you I'll just change the year a bit and remove
-the name.**
-
 The year is 1530, you are a ship navigator, and, seized by the
-adventurous spirit of the time, you decide to join an adventurous crew
+adventurous spirit of the time, you decide to join a crew
 on their quest to circumnavigate earth. Month after month, you observe
 the stars to keep track of your location and count the sunrises to keep
 track of time. When you finally arrive back at you home port, the crew,
@@ -322,46 +313,7 @@ complete $n$-partite graph (where $n$ is the number of players), and $g$
 is constrained by (1) the rule function being two-valued (win or lose,
 nothing in between), and (2) the fact that the referee always asks a
 question to *every* player. It would be nice to explore what the extra
-flexibility given by $\text{Scen}/[2]$ buys us, both in terms of
-categorical structure and the possibility of regarding further
-structures as games of a generalized kind.
-
----------------------------------------------------------- DELETE BELOW
-(JUST SKETCH)
-
-Tentative checklist of ideas to be covered:
-
-- contextual models
-
-- different forms of contextuality
-
-- morphisms of scenarios (+ \"black box\" point of view)
-
-- describing contextuality in terms of simulability
-
-- non-local games -- some example of quantum strategy whose winning
-  probability is higher than any classical strategy
-
-- suggest the definition of category of non-local games (slice over
-  $[2]$)
-
-- questions to be addressed:
-
-  - desirable properties/constructions to be expressible in a
-    categorical way
-
-  - is it interesting to restrict to special subcategories (like
-    restricting to coherence spaces)?
-
-\*\*\*possible question to state at the end\*\*\*\
-Is there a formalism that refines the one of measurement scenarios in
-the sense that we can actually encode to what extent a set of
-measurements fails to be a scenario, and where we can actually encode
-how taking a particular measurement affects others?
-
-\*\*\*\* another question \*\*\*\*\
-what concepts other than simulability can be expressed in a relative
-way?
+flexibility given by $\text{Scen}/[2]$ buys us, in terms of categorical structure and also the possibility of regarding different structures as games of a generalized kind.
 
 [^1]: This tale, while loosely tied to actual historical events, is not
     based on a real story; you are indeed not a ship navigator in the
