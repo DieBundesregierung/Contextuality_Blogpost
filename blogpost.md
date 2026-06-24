@@ -73,7 +73,8 @@ scenario $T\!Z = (X_{TZ}, \Sigma_{TZ}, (O_{TZ,x})_{x\in X_{TZ}})$. As
 the set of measurements we choose the set of $24$ time zones that you
 cross on your voyage $$X_{TZ} = \{0,..,23\}.$$ For the set of outcomes,
 we choose the possible days and time
-$$O_{TZ,x} = \{0,...,364\} \times \{0,...,23\}.$$ Note that the possible
+$$ O_{TZ,x} = \{0,...,364\} \times \{0,...,23\}.$$
+Note that the possible
 outcomes are the same for each measurement, which amounts to assuming
 that everyone divides their year into $365$ days and a day into $24$
 hours, a simplifying assumption. Our contexts are sets of neighboring
@@ -105,7 +106,9 @@ culture of the Alice's and in their neighboring time zone to the east
 $(B)$ the culture of the Bob's. Upon first contact with each other, they
 decide to create a mutual time system: at any moment, they can look at
 their clock-calendar and see an ordered pair
-$$(d,h) \in \{0,...,364\} \times \{0,...,23\}\,.$$ However, the fact
+$$(d,h) \in \{0,...,364\} \times \{0,...,23\} \,.$$
+
+However, the fact
 that they're in neighboring time zones puts a constraint on the
 outcomes! If they check the time simultaneously, the only possible joint
 outcomes are the ones where the Bob's are one hour ahead, i.e. pairs
@@ -165,11 +168,11 @@ Let's build a probabilistic model on our measurement scenario $M$. We
 need to specify compatible probability distributions on the contexts. We
 display the three distributions in the following table.
 
-      $e$      $(0,0)$   $(0,1)$   $(1,0)$   $(1,1)$
-  ----------- --------- --------- --------- ---------
-   $\{a,b\}$    $1/2$      $0$       $0$      $1/2$
-   $\{b,c\}$    $3/8$     $1/8$     $1/8$     $3/8$
-   $\{c,a\}$    $1/8$     $3/8$     $3/8$     $1/8$
+  |  | $(0,0)$ | $(0,1)$ | $(1,0)$ | $(1,1)$ |
+  |:-----:|:---------:|:---------:|:---------:|:-------:|
+  | $e_{\{a,b\}}$ | $1/2$  |    $0$ |       $0$   |   $1/2$ |
+  | $e_{\{b,c\}}$  |  $3/8$  |   $1/8$  |   $1/8$   |  $3/8$ |
+  | $e_{\{c,a\}}$ |   $1/8$  |   $3/8$  |   $3/8$   |  $1/8$
 
 Note that they are indeed compatible, the probability that e.g. $a=0$ is
 $1/2\,$ according to both $e_{\{a,b\}}$ and $e_{\{c,a\}}$. Taking a
@@ -208,7 +211,9 @@ or, from another perspective, to simulate a model of $S$ from a model of
 $T$. Writing $\text{EMP}(-)$ for the set of empirical models of a given
 scenario, we have a map
 $\text{EMP}(f):\text{EMP}(S) \rightarrow \text{EMP}(T)$ given by
-$$(\text{EMP}(f)e)_U = \alpha_{f,U*}(e_{\pi_f(U)}).$$ That is, in order
+$$(\text{EMP}(f)e)_U = \alpha_{f,U*}(e_{\pi_f(U)}).$$
+
+That is, in order
 to obtain a probability distribution on a context $U \in \Sigma_T$, we
 take the distribution on $\mathcal E_S(\pi_f(U))$ provided by $e$ and
 push it forward along
