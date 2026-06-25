@@ -1,16 +1,7 @@
 # Introduction
 
-**Daniel: an idea for the \"same\" story with different characters is to
-use the plot of the book Around the world in 80 days (I never read the
-book but I know that the story contains exactly the phenomenon we want
-to illustrate - the guy finishes the trip around the world and then
-realizes he's one day behind what he expected). I can work on that, if
-you think it's a good idea.\
-Ioannis: If it's ok with you I'll just change the year a bit and remove
-the name.**
-
 The year is 1530, you are a ship navigator, and, seized by the
-adventurous spirit of the time, you decide to join an adventurous crew
+adventurous spirit of the time, you decide to join a crew
 on their quest to circumnavigate earth. Month after month, you observe
 the stars to keep track of your location and count the sunrises to keep
 track of time. When you finally arrive back at you home port, the crew,
@@ -26,18 +17,18 @@ to the east are a bit ahead in their day, while the neighbors to the
 west are behind. In each local patch, this way of modeling date and time
 was coherent, yet it could not be extended globally. Congratulations,
 you just discovered a contextual model, i.e. a model that is locally
-coherent everywhere, but is not consistent globally. [^1]. Ultimately,
-the introduction of the international dateline eliminated contextuality
+coherent everywhere, but is not consistent globally.[^1] Ultimately,
+the introduction of the international date line eliminated contextuality
 from global time-keeping and thus paved the way for global
 communication. It would thus take many more centuries until the concept
 of contextuality gained attention when it appeared in quantum mechanics,
 where it has now been declared to be one of the magical, and impossible
 to grasp quantum effects. In this blog post, we attempt to demystify the
 concept of contextuality. We do that by describing two contextual
-models 1) a very intuitive model of time zones for you the navigator, 2)
+models: (1) a very intuitive model of time zones for you the navigator, (2)
 an artificial minimal contextual model. For that purpose we adopt the
-perspective presented in the paper \"Closing Bell: Boxing black box
-simulations in the resource theory of contextuality\" by R. S. Barbosa,
+perspective presented in the paper \"[Closing Bell: Boxing black box
+simulations in the resource theory of contextuality](https://arxiv.org/abs/2104.11241)\" by R. S. Barbosa,
 M. Karvonen, and S. Mansfield. We describe their category in which
 contextual and non-contextual models live and construct our desired
 examples as objects of it. In the end we go on to elaborate on
@@ -59,21 +50,20 @@ Furthermore, if we have a set of measurements that can be performed
 simultaneously, then any subset of it is also a set of measurements that
 can be carried out at the same time, i.e.
 $\sigma\in \Sigma_S \land \sigma'\subseteq \sigma \Longrightarrow \sigma'\in \Sigma_S$.
-These conditions on $\Sigma_S$ are exactly the axioms of a simplicial
-complex. Now an event in a scenario $S$ can be modeled with the *event
+These conditions on $\Sigma_S$ are exactly the axioms of a [simplicial
+complex](https://en.wikipedia.org/wiki/Simplicial_complex). An event in a scenario $S$ can be modeled with the *event
 sheaf* $$\begin{align*}
     \mathcal{E}_S : \mathcal{P}(X_S)^{op} &\longrightarrow \mathrm{FinSet}\\
     U &\longmapsto \prod_{x \in U} O_{S,x}\\
     U \subseteq V & \longmapsto \left(\prod_{x \in V} \!\!O_{S,x}\, \xrightarrow{\pi} \,\prod_{x \in U}\!\! O_{S,x}\! \right)
 \end{align*}$$
 
-Now let's formally build scenarios for each of our desired example
+Now, let's formally build scenarios for each of our desired example
 models. We build our contextual time-zone model in a measurement
 scenario $T\!Z = (X_{TZ}, \Sigma_{TZ}, (O_{TZ,x})_{x\in X_{TZ}})$. As
-the set of measurements we choose the set of $24$ time zones that you
-cross on your voyage $$X_{TZ} = \{0,..,23\}.$$ For the set of outcomes,
-we choose the possible days and time
-$$ O_{TZ,x} = \{0,...,364\} \times \{0,...,23\}.$$
+the set of measurements, we choose the set of $24$ time zones that you
+cross on your voyage, that is, $$X_{TZ} = \{0,..,23\}.$$ For the set of outcomes,
+we take all possible pairs (day in a year, hour in a day): $$ O_{TZ,x} = \{0,...,364\} \times \{0,...,23\}.$$
 Note that the possible
 outcomes are the same for each measurement, which amounts to assuming
 that everyone divides their year into $365$ days and a day into $24$
@@ -81,14 +71,12 @@ hours, a simplifying assumption. Our contexts are sets of neighboring
 time zones (and their subsets):
 $$\Sigma_{TZ} = \big\{\, \sigma~ \big|~ \exists n\in X_{TZ}.~\sigma \subseteq \{n,n+1\}\big\},$$
 where $n+1$ is understood to be modulo $24$. Let it be clear that there
-are many alternative ways this could have been set up, we attempted to
-pick a intuitive one.
+are many alternative ways this could have been set up; we attempted to
+pick an intuitive one.
 
 Our minimal contextual model occurs in a measurement scenario we name
 $M = (X_{M}, \Sigma_{M}, (O_{M,x})_{x\in X_{M}})$. It consists of merely
-three measurements $$X_M = \{a,b,c\}$$ with two possible outcomes
-respectively $$O_{M,x} = \{0,1\}.$$ You can perform each combination of
-measurements, but not all three at the same time, i.e.
+three measurements $$X_M = \{a,b,c\}$$ with two possible outcomes each, $$O_{M,x} = \{0,1\}.$$ You can perform any pair of judgments at the same time, but not all three of them, i.e.
 $$\Sigma_M = \mathcal{P}(X_M)\setminus \{a,b,c\}.$$
 
 Having fixed scenarios $T\!Z$ and $M$, we can go on to describe the
@@ -100,10 +88,10 @@ The next step is to encode the outcomes that are actually observed once
 the measurements are performed simultaneously within each given context.
 This is captured by the notion of an *empirical model*.
 
-Let's consider again our time zone example, to understand what we
-actually want an empirical model to be. Imagine two cultures, $(A)$ the
-culture of the Alice's and in their neighboring time zone to the east
-$(B)$ the culture of the Bob's. Upon first contact with each other, they
+Let's consider again our time zone example to understand what we
+actually want an empirical model to be. Imagine two cultures: $(A)$, the
+culture of the Alices and in their neighboring time zone to the east
+$(B)$ the culture of the Bobs. Upon first contact with each other, they
 decide to create a mutual time system: at any moment, they can look at
 their clock-calendar and see an ordered pair
 $$(d,h) \in \{0,...,364\} \times \{0,...,23\} \,.$$
@@ -111,15 +99,15 @@ $$(d,h) \in \{0,...,364\} \times \{0,...,23\} \,.$$
 However, the fact
 that they're in neighboring time zones puts a constraint on the
 outcomes! If they check the time simultaneously, the only possible joint
-outcomes are the ones where the Bob's are one hour ahead, i.e. pairs
+outcomes are the ones where the Bobs are one hour ahead, i.e. pairs
 $((d_A,h_A),(d_B,h_B))$ such that
 
 - either $0 \le h_A = h_B - 1 \le 22$ and $d_A = d_B$,
 
 - or $h_A = 23$, $h_B = 0$, and $d_B = d_A + 1$ (modulo $365$).
 
-An empirical model is a set of distributions over the outcomes of the
-contexts, that captures such compatibility conditions. To formalize
+An empirical model is a family of distributions over the outcomes of the
+contexts that captures such compatibility conditions. To formalize
 this, consider the functor $D:\text{FinSet} \rightarrow \text{Set}$ that
 sends a set $X$ to the set $D(X)$ of all probability distributions on it
 -- maps $e:X \rightarrow [0,1]$ such that $\sum_{x \in X}e(x) = 1$ --,
@@ -234,8 +222,7 @@ non-simulability from $z$.
 
 # Encoding non-local games as simulations
 
-As a neat application of the category of scenarios, the authors of LINK
-describe *non-local games* as certain probabilistic maps. Picture the
+As a neat application of the category of scenarios, the [paper](https://arxiv.org/abs/2104.11241)'s authors describe *non-local games* as certain probabilistic maps. Picture the
 following situation: a number of players -- say $n$, but often one
 considers $2$ -- are collaboratively trying to win a game posed by a
 referee. For $i = 1$, \..., $n$, the referee sends to the $i$-th player
@@ -254,8 +241,8 @@ maximize the probability of winning.
 A strategy in a classical sense is given by just choosing a map
 $Q_i \rightarrow A_i$ for each $i$, and this leads to the *classical
 value* of the game: the highest winning probability among all classical
-strategies. However (and this is how non-local games connect with
-quantum information theory!), we can consider a kind of strategy where
+strategies. However ([and this is how non-local games connect with
+quantum information theory]{https://en.wikipedia.org/wiki/CHSH_inequality}!), we can consider a kind of strategy where
 there can be correlations between the answers given by different
 players, even though the probability of a player giving a certain answer
 to a certain question doesn't depend on what others have been asked. In
@@ -268,10 +255,9 @@ $(q'_1, ..., q'_n)$ such that $q_i = q'_i$ for $i \in I$, we have
 $$\sum_{(a_i)_{i \notin I} \in \prod_{i \notin I} A_i} e_{q_1, ..., q_n}(a_1, ..., a_n) = \sum_{(a'_i)_{i \notin I} \in \prod_{i \notin I} A_i} e_{q'_1, ..., q'_n}(a'_1, ..., a'_n)$$
 provided that $a_i = a'_i$ for $i \in I$. An interesting point is that
 there exist games that admit a strategy in the generalized sense whose
-winning probability is higher than that of any classical strategy. This
-can be used, in certain cases, to obtain numerical values attesting that
-a quantum-mechanical system is behaving in a non-classical way. LINK
-HERE
+winning probability is higher than that of any classical strategy.[^2] This
+can be used, in certain cases, to [obtain numerical values attesting that
+a quantum-mechanical system is behaving in a non-classical way](https://arxiv.org/abs/2203.15877).
 
 We express a non-local game as a probabilistic map of scenarios in the
 following way:
@@ -298,7 +284,7 @@ This approach suggests considering the slice category $\text{Scen}/[2]$
 as a candidate "category of non-local games\". Informally, we can think
 of a morphism
 $$\bigg(g:S \rightarrow [2]\bigg) \longrightarrow \bigg(g':T \rightarrow [2] \bigg)$$
-MAYBE REPLACE THIS BY JUST A COMMUTATIVE TRIANGLE a form of
+as a form of
 communication between the players from the two scenarios that allows
 those in $T$ to obtain a strategy for their own game by translating, in
 a way that preserves the winning probability, any strategy that the
@@ -314,7 +300,7 @@ $S \mapsto \text{EMP}(S)$ allows us to transport strategies.
 This way of expressing non-local games suggests many questions. For
 example, how does this connect with the theory of synchronous games
 (where the possible questions and answers are the same for all players)
-and the construction of \*-algebras from those? Does synchronicity admit
+and [the construction of \*-algebras from those](https://link.springer.com/rwe/10.1007/978-3-0348-0692-3_83-1#Sec33)? Does synchronicity admit
 a categorical formulation, and is the passage to \*-algebras part of an
 adjunction? Also, can we give a categorical description of algebraic
 operations on games, such as parallel repetition and Boolean operations?
@@ -325,49 +311,12 @@ considered earlier. Indeed, the maps $g:S \rightarrow [2]$ obtained via
 our explicit construction are far from arbitrary: $S$ is determined by a
 complete $n$-partite graph (where $n$ is the number of players), and $g$
 is constrained by (1) the rule function being two-valued (win or lose,
-nothing in between), and (2) the fact that the referee always asks a
+nothing in between), and (2) the fact that the referee asks a
 question to *every* player. It would be nice to explore what the extra
-flexibility given by $\text{Scen}/[2]$ buys us, both in terms of
-categorical structure and the possibility of regarding further
-structures as games of a generalized kind.
-
----------------------------------------------------------- DELETE BELOW
-(JUST SKETCH)
-
-Tentative checklist of ideas to be covered:
-
-- contextual models
-
-- different forms of contextuality
-
-- morphisms of scenarios (+ \"black box\" point of view)
-
-- describing contextuality in terms of simulability
-
-- non-local games -- some example of quantum strategy whose winning
-  probability is higher than any classical strategy
-
-- suggest the definition of category of non-local games (slice over
-  $[2]$)
-
-- questions to be addressed:
-
-  - desirable properties/constructions to be expressible in a
-    categorical way
-
-  - is it interesting to restrict to special subcategories (like
-    restricting to coherence spaces)?
-
-\*\*\*possible question to state at the end\*\*\*\
-Is there a formalism that refines the one of measurement scenarios in
-the sense that we can actually encode to what extent a set of
-measurements fails to be a scenario, and where we can actually encode
-how taking a particular measurement affects others?
-
-\*\*\*\* another question \*\*\*\*\
-what concepts other than simulability can be expressed in a relative
-way?
+flexibility given by $\text{Scen}/[2]$ buys us, in terms of categorical structure and also the possibility of regarding different structures as games of a generalized kind.
 
 [^1]: This tale, while loosely tied to actual historical events, is not
     based on a real story; you are indeed not a ship navigator in the
     16th century.
+
+[^2]: Keep an eye out for Adina Goldberg and Nayan Rajesh's upcoming blog post!
