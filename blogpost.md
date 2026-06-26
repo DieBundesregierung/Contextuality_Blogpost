@@ -59,31 +59,31 @@ complex](https://en.wikipedia.org/wiki/Simplicial_complex). An event in a scenar
 sheaf* $$\begin{align*}
     \mathcal{E}_S : \mathcal{P}(X_S)^{op} &\longrightarrow \mathrm{FinSet}\\
     U &\longmapsto \prod_{x \in U} O_{S,x}\\
-    U \subseteq V & \longmapsto \left(\prod_{x \in V} \!\!O_{S,x}\, \xrightarrow{\pi} \,\prod_{x \in U}\!\! O_{S,x}\! \right)
+    U \subseteq V & \longmapsto \left(\prod_{x \in V} O_{S,x}\, \xrightarrow{\pi} \,\prod_{x \in U} O_{S,x} \right)
 \end{align*}$$
 
 Now, let's formally build scenarios for each of our desired example
 models. We build our contextual time-zone model in a measurement
-scenario $T\!Z = (X_{TZ}, \Sigma_{TZ}, (O_{TZ,x})_{x\in X_{TZ}})$. As
+scenario $TZ = (X_{TZ}, \Sigma_{TZ}, (O_{TZ,x})_{x\in X_{TZ}})$. As
 the set of measurements, we choose the set of $24$ time zones that you
-cross on your voyage, that is, $$X_{TZ} = \{0,..,23\}.$$ For the set of outcomes,
-we take all possible pairs (day in a year, hour in a day): $$ O_{TZ,x} = \{0,...,364\} \times \{0,...,23\}.$$
+cross on your voyage, that is, $$X_{TZ} = \lbrace 0,..,23\rbrace.$$ For the set of outcomes,
+we take all possible pairs (day in a year, hour in a day): $$ O_{TZ,x} = \lbrace  0,...,364\rbrace  \times \lbrace 0,...,23\rbrace .$$
 Note that the possible
 outcomes are the same for each measurement, which amounts to assuming
 that everyone divides their year into $365$ days and a day into $24$
 hours, a simplifying assumption. Our contexts are sets of neighboring
 time zones (and their subsets):
-$$\Sigma_{TZ} = \big\{\, \sigma~ \big|~ \exists n\in X_{TZ}.~\sigma \subseteq \{n,n+1\}\big\},$$
+$$\Sigma_{TZ} = \bigg\lbrace \, \sigma~ \bigg|~ \exists n\in X_{TZ}.~\sigma \subseteq \lbrace n,n+1\rbrace \bigg\rbrace ,$$
 where $n+1$ is understood to be modulo $24$. Let it be clear that there
 are many alternative ways this could have been set up; we attempted to
 pick an intuitive one.
 
 Our minimal contextual model occurs in a measurement scenario we name
 $M = (X_{M}, \Sigma_{M}, (O_{M,x})_{x\in X_{M}})$. It consists of merely
-three measurements $$X_M = \{a,b,c\}$$ with two possible outcomes each, $$O_{M,x} = \{0,1\}.$$ You can perform any pair of judgments at the same time, but not all three of them, i.e.
-$$\Sigma_M = \mathcal{P}(X_M)\setminus \{a,b,c\}.$$
+three measurements $$X_M = \lbrace a,b,c\rbrace $$ with two possible outcomes each, $$O_{M,x} = \lbrace 0,1\rbrace .$$ You can perform any pair of judgments at the same time, but not all three of them, i.e.
+$$\Sigma_M = \mathcal{P}(X_M)\setminus \lbrace a,b,c\rbrace .$$
 
-Having fixed scenarios $T\!Z$ and $M$, we can go on to describe the
+Having fixed scenarios $TZ$ and $M$, we can go on to describe the
 actual models.
 
 # Empirical models
@@ -98,7 +98,7 @@ culture of the Alices and in their neighboring time zone to the east
 $(B)$ the culture of the Bobs. Upon first contact with each other, they
 decide to create a mutual time system: at any moment, they can look at
 their clock-calendar and see an ordered pair
-$$(d,h) \in \{0,...,364\} \times \{0,...,23\} \,.$$
+$$(d,h) \in \lbrace 0,...,364\rbrace  \times \lbrace 0,...,23\rbrace  \,.$$
 
 However, the fact
 that they're in neighboring time zones puts a constraint on the
@@ -131,14 +131,14 @@ Analogously, a *possibilistic empirical model* in a scenario $S$, is a
 section $e$ of the composite functor
 $$D_{\mathbb{B}} \circ \mathcal{E}_S: \mathcal{P}(X_S)^{op} \longrightarrow \text{FinSet}.$$
 where $D_\mathbb{B}$ is the Boolean distribution functor (a Boolean
-distribution on a set $X$ is a function $e : X \rightarrow \{0,1\}$,
+distribution on a set $X$ is a function $e : X \rightarrow \lbrace 0,1\rbrace $,
 such that $\lor_{x\in X}e(x) = 1$).
 
 We now build the possibilistic contextual model of our time zone
-example. Given a context $\{n,n+1\}\in \Sigma_{TZ}$, i.e. a pair of
-neighboring time zones, then the boolean distribution $e_{\{n,n+1\}}$ is
+example. Given a context $\lbrace n,n+1\rbrace \in \Sigma_{TZ}$, i.e. a pair of
+neighboring time zones, then the boolean distribution $e_{\lbrace n,n+1\rbrace }$ is
 defined as: $$\begin{align*}
-    e_{\{n,n+1\}}\left((d_A,h_A),(d_B,h_B)\right) = 1 &&:\Longleftrightarrow && \begin{cases}
+    e_{\lbrace n,n+1\rbrace }\left((d_A,h_A),(d_B,h_B)\right) = 1 &&:\Longleftrightarrow && \begin{cases}
         d_B = d_A \;\land\; h_B = h_A+1, &h_A < 23\\
         d_B = d_A+1\; \land\; h_B = 0,& h_A = 23.
     \end{cases}
@@ -162,18 +162,18 @@ display the three distributions in the following table.
 
   |  | $(0,0)$ | $(0,1)$ | $(1,0)$ | $(1,1)$ |
   |:-----:|:---------:|:---------:|:---------:|:-------:|
-  | $e_{\{a,b\}}$ | $1/2$  |    $0$ |       $0$   |   $1/2$ |
-  | $e_{\{b,c\}}$  |  $3/8$  |   $1/8$  |   $1/8$   |  $3/8$ |
-  | $e_{\{c,a\}}$ |   $1/8$  |   $3/8$  |   $3/8$   |  $1/8$
+  | $e_{\lbrace a,b\rbrace }$ | $1/2$  |    $0$ |       $0$   |   $1/2$ |
+  | $e_{\lbrace b,c\rbrace }$  |  $3/8$  |   $1/8$  |   $1/8$   |  $3/8$ |
+  | $e_{\lbrace c,a\rbrace }$ |   $1/8$  |   $3/8$  |   $3/8$   |  $1/8$
 
 Note that they are indeed compatible, the probability that e.g. $a=0$ is
-$1/2\,$ according to both $e_{\{a,b\}}$ and $e_{\{c,a\}}$. Taking a
+$1/2\,$ according to both $e_{\lbrace a,b\rbrace }$ and $e_{\lbrace c,a\rbrace }$. Taking a
 closer look at the distributions, we can note the following:
-distribution $e_{\{a,b\}}$ is such that $a$ and $b$ are always equal and
-$e_{\{b,c\}}$ is such that $b$ is very likely to be equal to be equal.
-However, $e_{\{c,a\}}$ is such that $a$ and $c$ are very likely to be
+distribution $e_{\lbrace a,b\rbrace }$ is such that $a$ and $b$ are always equal and
+$e_{\lbrace b,c\rbrace }$ is such that $b$ is very likely to be equal to be equal.
+However, $e_{\lbrace c,a\rbrace }$ is such that $a$ and $c$ are very likely to be
 unequal. Obviously, there is no global distribution on the outcomes of
-$\{a,b,c\}$ that can capture that. This is a weak notion of
+$\lbrace a,b,c\rbrace $ that can capture that. This is a weak notion of
 contextuality, since it appears only on the level of probabilities.
 There are globally consistent outcomes, like $(0,0,0)$, it is just that
 the three distributions cannot agree on the probability with which they
@@ -192,7 +192,7 @@ $f = (\pi_f,\alpha_f):S \rightarrow T$ consists of
 
 - a relation $\pi_f \subset X_T \times X_S$ that is simplicial in the
   sense that for all $U \in \Sigma_S$,
-  $$\pi_f(U) := \{x \in X_S \mid (y,x) \in \pi_f \text{ for some } y \in X_T\}$$
+  $$\pi_f(U) := \lbrace x \in X_S \mid (y,x) \in \pi_f \text{ for some } y \in X_T\rbrace $$
   belongs to $\Sigma_T$;
 
 - for each $y \in X_T$, a function
@@ -234,7 +234,7 @@ a question drawn from a set $Q_i$, and this is done according to a
 probability distribution on $Q_1 \times \cdots \times Q_n$. The $i$-th
 player must provide an answer from a set $A_i$, and the game's result is
 determined by a "rule\" function
-$$Q_1 \times \cdots \times Q_n \times A_1 \times \cdots \times A_n \rightarrow \{0,1\}$$
+$$Q_1 \times \cdots \times Q_n \times A_1 \times \cdots \times A_n \rightarrow \lbrace 0,1\rbrace $$
 where $1$ means that they win, and $0$ that they lose. The players, who
 have access to both the distribution on tuples of questions and the rule
 function, can agree on a strategy before the game starts, but they
@@ -254,7 +254,7 @@ this broader sense, a strategy can be encoded by a probability
 distribution $$e_{q_1, ..., q_n} \in D(A_1 \times \cdots \times A_n)$$
 for each tuple of questions $(q_1, ..., q_n)$ in a way that is
 compatible with marginalizing to smaller tuples of questions: for
-$I \subset \{1, ..., n\}$ and tuples $(q_1, ..., q_n)$,
+$I \subset \lbrace 1, ..., n\rbrace $ and tuples $(q_1, ..., q_n)$,
 $(q'_1, ..., q'_n)$ such that $q_i = q'_i$ for $i \in I$, we have
 $$\sum_{(a_i)_{i \notin I} \in \prod_{i \notin I} A_i} e_{q_1, ..., q_n}(a_1, ..., a_n) = \sum_{(a'_i)_{i \notin I} \in \prod_{i \notin I} A_i} e_{q'_1, ..., q'_n}(a'_1, ..., a'_n)$$
 provided that $a_i = a'_i$ for $i \in I$. An interesting point is that
@@ -268,7 +268,7 @@ following way:
 
 - let $S$ be the scenario whose set of measurements is
   $Q_1 \sqcup \cdots \sqcup Q_n$, whose maximal contexts are the sets
-  $\{q_1, ..., q_n\}$ containing exactly one question for each player,
+  $\lbrace q_1, ..., q_n\rbrace $ containing exactly one question for each player,
   and whose set of outcomes for each $q \in Q_i$ is the set of answers
   $A_i$;
 
@@ -279,7 +279,7 @@ The probability distribution on $Q_1 \times \cdots \times Q_n$ and the
 rule function can be described as a probabilistic map
 $g:S \rightarrow [2]$. Moreover, a strategy can be encoded as an
 empirical model $e \in \text{EMP}(S)$, and its push-forward
-$\text{EMP}(g)(e)$ (which is a probability distribution on $\{0, 1\}$,
+$\text{EMP}(g)(e)$ (which is a probability distribution on $\lbrace 0, 1\rbrace $,
 and therefore corresponds to a value $p \in [0,1]$) gives the winning
 probability of the strategy.
 
