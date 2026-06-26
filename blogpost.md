@@ -34,6 +34,10 @@ contextual and non-contextual models live and construct our desired
 examples as objects of it. In the end we go on to elaborate on
 connections between their framework and game theory.
 
+[^1]: This tale, while loosely tied to actual historical events, is not
+    based on a real story; you are indeed not a ship navigator in the
+    16th century.
+
 # Measurement Scenarios and Events
 
 To have a precise notion of a contextual model, we need to describe the
@@ -112,12 +116,12 @@ this, consider the functor $D:\text{FinSet} \rightarrow \text{Set}$ that
 sends a set $X$ to the set $D(X)$ of all probability distributions on it
 -- maps $e:X \rightarrow [0,1]$ such that $\sum_{x \in X}e(x) = 1$ --,
 and sends $f:X \rightarrow Y$ to the marginalization function
-$f_*:D(X) \rightarrow D(Y)$ given by
-$f_*(e)(y) = \sum_{x \in f^{-1}(y)}e(x)$. A *(probabilistic) empirical
+$f_{*}:D(X) \rightarrow D(Y)$ given by
+$f_{*}(e)(y) = \sum_{x \in f^{-1}(y)}e(x)$. A *(probabilistic) empirical
 model* on a measurement scenario
 $S = (X_S,\Sigma_S, (O_{S,x})_{x \in X_S})$ is a global section $e$ of
 the composite functor
-$$D \circ \mathcal E_S: \mathcal P(X_S)^{op} \longrightarrow \text{FinSet}.$$
+$$D \circ \mathcal{E}_S: \mathcal{P}(X_S)^{op} \longrightarrow \text{FinSet}.$$
 In other words, it specifies for each context $U$ a probability
 distribution $e_U$ on the set of joint outcomes
 $\prod_{x \in U}O_{S,x}$, subject to the condition that $e_U, e_{U'}$
@@ -125,7 +129,7 @@ always coincide when marginalized to $U \cap U'$.
 
 Analogously, a *possibilistic empirical model* in a scenario $S$, is a
 section $e$ of the composite functor
-$$D_{\mathbb{B}} \circ \mathcal E_S: \mathcal P(X_S)^{op} \longrightarrow \text{FinSet}.$$
+$$D_{\mathbb{B}} \circ \mathcal{E}_S: \mathcal{P}(X_S)^{op} \longrightarrow \text{FinSet}.$$
 where $D_\mathbb{B}$ is the Boolean distribution functor (a Boolean
 distribution on a set $X$ is a function $e : X \rightarrow \{0,1\}$,
 such that $\lor_{x\in X}e(x) = 1$).
@@ -192,7 +196,7 @@ $f = (\pi_f,\alpha_f):S \rightarrow T$ consists of
   belongs to $\Sigma_T$;
 
 - for each $y \in X_T$, a function
-  $\alpha_{f,y}:\mathcal E_S(\pi_f(y)) \rightarrow \mathcal E_T(y)$.
+  $\alpha_{f,y}:\mathcal{E}_S(\pi_f(y)) \rightarrow \mathcal{E}_T(y)$.
 
 These data can be used to transport empirical models from $S$ to $T$,
 or, from another perspective, to simulate a model of $S$ from a model of
@@ -203,9 +207,9 @@ $$(\text{EMP}(f)e)_U = \alpha_{f,U*}(e_{\pi_f(U)}).$$
 
 That is, in order
 to obtain a probability distribution on a context $U \in \Sigma_T$, we
-take the distribution on $\mathcal E_S(\pi_f(U))$ provided by $e$ and
+take the distribution on $\mathcal{E}_S(\pi_f(U))$ provided by $e$ and
 push it forward along
-$\alpha_{f,U}:\mathcal E_S(\pi_f(U)) \rightarrow \mathcal E_T(U)$. In
+$\alpha_{f,U}:\mathcal{E}_S(\pi_f(U)) \rightarrow \mathcal{E}_T(U)$. In
 fact, since empirical models on a given scenario form a convex set, we
 can transport them along any formal convex combination of deterministic
 maps via the formula
@@ -314,9 +318,5 @@ is constrained by (1) the rule function being two-valued (win or lose,
 nothing in between), and (2) the fact that the referee asks a
 question to *every* player. It would be nice to explore what the extra
 flexibility given by $\text{Scen}/[2]$ buys us, in terms of categorical structure and also the possibility of regarding different structures as games of a generalized kind.
-
-[^1]: This tale, while loosely tied to actual historical events, is not
-    based on a real story; you are indeed not a ship navigator in the
-    16th century.
 
 [^2]: Keep an eye out for Adina Goldberg and Nayan Rajesh's upcoming blog post!
