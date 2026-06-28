@@ -40,27 +40,18 @@ connections between their framework and game theory.
 
 # Measurement Scenarios and Events
 
-To have a precise notion of a contextual model, we need to describe the
-*measurement scenario* in which such a model can appear. A measurement
-scenario $S$ consists of a finite set of possible measurements $X_S$, a
-finite set of outcomes $(O_{S,x})_{x\in X_S}$ for each measurement
-$x \in X_S$, and a set $\Sigma_S \subseteq \mathcal{P}(X_S)$ that
-contains precisely the sets of measurements $\sigma \subseteq X_S$ that
-can be performed simultaneously. Let us take a closer look at what
-structure $\Sigma_S$ must have. Surely we can always do only a single
-measurement or even no measurement at all, meaning that $\Sigma_S$
-definitely contains all the singletons as well as the empty set.
-Furthermore, if we have a set of measurements that can be performed
-simultaneously, then any subset of it is also a set of measurements that
-can be carried out at the same time, i.e.
-$\sigma\in \Sigma_S \land \sigma'\subseteq \sigma \Longrightarrow \sigma'\in \Sigma_S$.
+To have a precise notion of a contextual model, we need to describe the *measurement scenario* in which such a model can appear. A measurement
+scenario $S$ consists of a finite set of possible measurements $X_S$, a finite set of outcomes $(O_{S,x} )_{x\in X_S}$ for each measurement
+$x \in X_S$, and a set $\Sigma _S \subseteq \mathcal{P}(X_S)$ that
+contains precisely the sets of measurements $\sigma \subseteq X_S$ that can be performed simultaneously. Let us take a closer look at what structure $\Sigma_S$ must have. Surely we can always do only a single measurement or even no measurement at all, meaning that $\Sigma_S$ definitely contains all the singletons as well as the empty set. Furthermore, if we have a set of measurements that can be performed simultaneously, then any subset of it is also a set of measurements that can be carried out at the same time, i.e. $\sigma \in \Sigma _S \land \sigma' \subseteq \sigma \implies \sigma'\in \Sigma_S$.
 These conditions on $\Sigma_S$ are exactly the axioms of a [simplicial
 complex](https://en.wikipedia.org/wiki/Simplicial_complex). An event in a scenario $S$ can be modeled with the *event
-sheaf* $$\begin{align*}
-    \mathcal{E}_S : \mathcal{P}(X_S)^{op} &\longrightarrow \mathrm{FinSet}\\
-    U &\longmapsto \prod_{x \in U} O_{S,x}\\
-    U \subseteq V & \longmapsto \left(\prod_{x \in V} O_{S,x}\, \xrightarrow{\pi} \,\prod_{x \in U} O_{S,x} \right)
-\end{align*}$$
+sheaf*
+$$\begin{aligned}
+    \mathcal{E}_S : \mathcal{P}(X_S)^{op} & \longrightarrow \mathrm{FinSet}\\
+    U & \mapsto \prod_{x \in U} O_{S,x}\\
+    U \subseteq V & \mapsto \left(\prod_{x \in V} O_{S,x}\, \xrightarrow{\pi} \,\prod_{x \in U} O_{S,x} \right)
+\end{aligned}$$
 
 Now, let's formally build scenarios for each of our desired example
 models. We build our contextual time-zone model in a measurement
@@ -73,7 +64,7 @@ outcomes are the same for each measurement, which amounts to assuming
 that everyone divides their year into $365$ days and a day into $24$
 hours, a simplifying assumption. Our contexts are sets of neighboring
 time zones (and their subsets):
-$$\Sigma_{TZ} = \bigg\lbrace \, \sigma~ \bigg|~ \exists n\in X_{TZ}.~\sigma \subseteq \lbrace n,n+1\rbrace \bigg\rbrace ,$$
+$$\Sigma_{TZ} = \bigg\lbrace \, \sigma \ \bigg| \ \exists n\in X_{TZ}. \ \sigma \subseteq \lbrace n,n+1\rbrace \bigg\rbrace ,$$
 where $n+1$ is understood to be modulo $24$. Let it be clear that there
 are many alternative ways this could have been set up; we attempted to
 pick an intuitive one.
@@ -81,7 +72,7 @@ pick an intuitive one.
 Our minimal contextual model occurs in a measurement scenario we name
 $M = (X_{M}, \Sigma_{M}, (O_{M,x})_{x\in X_{M}})$. It consists of merely
 three measurements $$X_M = \lbrace a,b,c\rbrace $$ with two possible outcomes each, $$O_{M,x} = \lbrace 0,1\rbrace .$$ You can perform any pair of judgments at the same time, but not all three of them, i.e.
-$$\Sigma_M = \mathcal{P}(X_M)\setminus \lbrace a,b,c\rbrace .$$
+$$\Sigma _M = \mathcal{P}(X_M)\setminus \lbrace a,b,c\rbrace .$$
 
 Having fixed scenarios $TZ$ and $M$, we can go on to describe the
 actual models.
@@ -110,55 +101,25 @@ $((d_A,h_A),(d_B,h_B))$ such that
 
 - or $h_A = 23$, $h_B = 0$, and $d_B = d_A + 1$ (modulo $365$).
 
-An empirical model is a family of distributions over the outcomes of the
-contexts that captures such compatibility conditions. To formalize
-this, consider the functor $D:\text{FinSet} \rightarrow \text{Set}$ that
-sends a set $X$ to the set $D(X)$ of all probability distributions on it
--- maps $e:X \rightarrow [0,1]$ such that $\sum_{x \in X}e(x) = 1$ --,
-and sends $f:X \rightarrow Y$ to the marginalization function
-$f_{*}:D(X) \rightarrow D(Y)$ given by
-$f_{*}(e)(y) = \sum_{x \in f^{-1}(y)}e(x)$. A *(probabilistic) empirical
-model* on a measurement scenario
-$S = (X_S,\Sigma_S, (O_{S,x})_{x \in X_S})$ is a global section $e$ of
-the composite functor
-$$D \circ \mathcal{E}_S: \mathcal{P}(X_S)^{op} \longrightarrow \text{FinSet}.$$
-In other words, it specifies for each context $U$ a probability
-distribution $e_U$ on the set of joint outcomes
-$\prod_{x \in U}O_{S,x}$, subject to the condition that $e_U, e_{U'}$
-always coincide when marginalized to $U \cap U'$.
+An empirical model is a family of distributions over the outcomes of the contexts that captures such compatibility conditions. For us, given a [semi-ring](https://en.wikipedia.org/wiki/Semiring#Definition) $(R, +, 0, \cdot, 1)$, an $R$-distribution on a finite set $X$ is a function $e : X \rightarrow R$ such that $\sum_{x \in X}e(x) = 1$. We care about the cases $R = [0,1]$, yielding probability distributions, and $R = \mathbb{B}$, yielding Boolean distributions or non-empty subsets. 
+We want to have distributions on events, which we had defined as a functor, a sheaf even. To define distributions on events, we thus consider the functors $D_{R}:\text{FinSet} \rightarrow \text{Set}$ that sends a set $X$ to the set $D_{R}(X)$ of all $R$-distributions on it and sends $f:X \rightarrow Y$ to the pulled back function $f_{\ast} :D_{R}(X) \rightarrow D_{R}(Y)$ given by $f_{\ast}(e)(y) = \sum_{x \in f^{-1}(y)}e(x)$. When we write only $D$, we mean $D_{[0,1]}$.
 
-Analogously, a *possibilistic empirical model* in a scenario $S$, is a
-section $e$ of the composite functor
-$$D_{\mathbb{B}} \circ \mathcal{E}_S: \mathcal{P}(X_S)^{op} \longrightarrow \text{FinSet}.$$
-where $D_\mathbb{B}$ is the Boolean distribution functor (a Boolean
-distribution on a set $X$ is a function $e : X \rightarrow \lbrace 0,1\rbrace $,
-such that $\lor_{x\in X}e(x) = 1$).
+Now, a *(probabilistic) empirical
+model* $e$ on a measurement scenario
+$S = (X_S,\Sigma_S, (O_{S,x})_{x \in X_S})$, also written $e:S$, is a family $(e_\sigma)_{\sigma \in \Sigma_S}$ of distributions on events in a context
+$$e_\sigma \in D \circ \mathcal{E}_S(\sigma) = D(\prod_{x\in \sigma}O_{S,x})$$
+subject to the compatibility condition that $\forall \tau \subseteq \sigma\ \ e_{\sigma|\tau} = e_{\tau}$, where $e_{\sigma|\tau}$ is the marginalization to $\tau$, formally defined as $e_{\sigma|\tau} = D \circ \mathcal{E}_S(\tau \subseteq \sigma)(e_\sigma)$.
 
-We now build the possibilistic contextual model of our time zone
-example. Given a context $\lbrace n,n+1\rbrace \in \Sigma_{TZ}$, i.e. a pair of
-neighboring time zones, then the boolean distribution $e_{\lbrace n,n+1\rbrace }$ is
-defined as: $$\begin{align*}
-    e_{\lbrace n,n+1\rbrace }\left((d_A,h_A),(d_B,h_B)\right) = 1 &&:\Longleftrightarrow && \begin{cases}
-        d_B = d_A \;\land\; h_B = h_A+1, &h_A < 23\\
-        d_B = d_A+1\; \land\; h_B = 0,& h_A = 23.
-    \end{cases}
-\end{align*}$$
+Analogously, a *possibilistic empirical model* in a scenario $S$, is a compatible family of Boolean distributions.
 
-So what makes this a *contextual* model? Contextuality is the
-impossibility of the distributions to glue together to a global one.
-More precisely, a model $e$ in a scenario $S$ is contextual, if there is
-no global distribution $d$ on global outcomes
+So what makes a model *contextual* ? Contextuality is the
+impossibility of the distributions to glue together to a global one, even though they are consistent wherever they overlap.
+More precisely, a model $e$ in a scenario $S$ is contextual, if there is no global distribution $d$ on global outcomes
 $\prod_{x\in X_S} O_{S,x}$, such that
-$d_\sigma = e_\sigma\,\forall \sigma \in \Sigma_S$. Clearly our time
-zone model is contextual, since there is no global arrangement of date
-and time, such that neighboring time-zones are always one hour apart.
-This example exhibits an extreme notion of contextuality, namely
-*strong* contextuality. We will see a weaker notion of contextuality in
-our next example.
+$d_{|\sigma} = e_\sigma\,\forall \sigma \in \Sigma_S$.
 
-Let's build a probabilistic model on our measurement scenario $M$. We
-need to specify compatible probability distributions on the contexts. We
-display the three distributions in the following table.
+Let's build a contextual probabilistic model on our measurement scenario $M$. We
+need to specify compatible probability distributions on the contexts. We display the three distributions $e_{\lbrace a,b\rbrace }, e_{\lbrace b,c\rbrace }, e_{\lbrace c,a\rbrace }$ in the following table, the other distributions can be deduced by marginalization.
 
   |  | $(0,0)$ | $(0,1)$ | $(1,0)$ | $(1,1)$ |
   |:-----:|:---------:|:---------:|:---------:|:-------:|
@@ -170,20 +131,32 @@ Note that they are indeed compatible, the probability that e.g. $a=0$ is
 $1/2\,$ according to both $e_{\lbrace a,b\rbrace }$ and $e_{\lbrace c,a\rbrace }$. Taking a
 closer look at the distributions, we can note the following:
 distribution $e_{\lbrace a,b\rbrace }$ is such that $a$ and $b$ are always equal and
-$e_{\lbrace b,c\rbrace }$ is such that $b$ is very likely to be equal to be equal.
+$e_{\lbrace b,c\rbrace }$ is such that $b$ is very likely to be equal to $c$.
 However, $e_{\lbrace c,a\rbrace }$ is such that $a$ and $c$ are very likely to be
 unequal. Obviously, there is no global distribution on the outcomes of
 $\lbrace a,b,c\rbrace $ that can capture that. This is a weak notion of
 contextuality, since it appears only on the level of probabilities.
 There are globally consistent outcomes, like $(0,0,0)$, it is just that
 the three distributions cannot agree on the probability with which they
-occur. This is in contrast to the time zone model, where a globally
-consistent outcome, i.e. a global assignment of date and time, was not
-even possible.
+occur.
+
+We now build the possibilistic empirical model of our time zone
+example. Given a context $\lbrace n,n+1\rbrace \in \Sigma_{TZ}$, i.e. a pair of
+neighboring time zones, the boolean distribution $e_{\lbrace n,n+1\rbrace }$ is
+defined as:
+$$\begin{aligned}
+    e_{\lbrace n,n+1\rbrace }\left((d_A,h_A),(d_B,h_B)\right) = 1 &&:\Longleftrightarrow && \begin{cases}
+        d_B = d_A \;\land\; h_B = h_A+1, &h_A \le 22\\
+        d_B = d_A+1\; \land\; h_B = 0,& h_A = 23.
+    \end{cases}
+\end{aligned}$$
+Note that these are exactly the conditions we had logically inferred in the beginning of this section.
+Clearly our time zone model is contextual, since there is no global arrangement of date and time, such that neighboring time-zones are always one hour apart. Contextuality in a possibilistic model, so called *logical contextuality*, is stronger than in a probabilistic one, because the distributions disagree even on what outcomes are possible, which is not necessarily the case in the probabilistic setting.
+Our example exhibits an extreme notion of contextuality, namely
+*strong* contextuality, where a global assignment of outcomes is impossible. The distributions disagree not sometimes, but always! More on the different kinds of contextuality can be found [here](https://arxiv.org/pdf/2603.11857).
 
 With this section we hope to have demystified the concept of
-contextuality for you the navigator. It is a property of a collection of
-distributions and can occur even in intuitive settings like time zones.
+contextuality. We go on to present apropriate morphisms.
 
 # Maps of scenarios
 
